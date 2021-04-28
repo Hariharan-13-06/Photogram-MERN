@@ -4,7 +4,7 @@ import { likePost, deletePost, heartPost } from '../../actions/posts';
 import { ThumbUpIcon, DotsVerticalIcon } from '@heroicons/react/outline';
 import { HeartIcon, TrashIcon } from '@heroicons/react/solid';
 
-const Post = ({setCurrentId, id, name, img, title, tags, likeCount, heartCount }) => {
+const Post = ({setCurrentId, userName, id, name, img, title, tags, likeCount, heartCount }) => {
     const dispatch = useDispatch();
     const postTags = tags?.split(',');
     console.log('POST');
@@ -20,7 +20,7 @@ const Post = ({setCurrentId, id, name, img, title, tags, likeCount, heartCount }
                     </div>
                     <DotsVerticalIcon className="h-7 w-7 cursor-pointer" />
                 </div>
-                <img src={img} className="md:h-80 md:w-80 w-auto text-center" />
+                <img src={img} className="md:h-80 md:w-80 w-96 h-96 text-center" />
                 <div className="flex flex-row items-center justify-between">
                     <div className='flex flex-row items-center py-3 space-x-3'>
                         <ThumbUpIcon onClick={() => dispatch(likePost(id))} className="h-7 w-7 cursor-pointer text-blue-700" />
@@ -28,7 +28,10 @@ const Post = ({setCurrentId, id, name, img, title, tags, likeCount, heartCount }
                         <HeartIcon onClick={() => dispatch(heartPost(id))} className="h-7 w-7 cursor-pointer text-red-500" />
                         <p className="text-lg font-semibold">{heartCount}</p>
                     </div>
-                    <TrashIcon onClick={() => dispatch(deletePost(id))} className="h-7 w-7 cursor-pointer text-red-600"/>
+                    {
+                        userName==name ? <TrashIcon onClick={() => dispatch(deletePost(id))} className="h-7 w-7 cursor-pointer text-red-600"/> : ''
+                    }
+                    
                 </div>
                 <div className="flex flex-row items-center space-x-3">
                     {

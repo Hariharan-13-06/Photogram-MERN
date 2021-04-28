@@ -40,7 +40,7 @@ const Upload = ({ currentId, setCurrentId }) => {
             <form onSubmit={handleSubmit} className="flex flex-col items-center space-y-4">
                 <TextField label="Shot By" color="primary" fullWidth variant="outlined" value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value})} />
                 <TextField label="Title" color="primary" fullWidth variant="outlined" value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value})} />
-                <TextField label="Tags" color="primary" fullWidth variant="outlined" vaue={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value})} />
+                <TextField label="Tags(comma separated)" color="primary" fullWidth variant="outlined" vaue={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value})} />
                 <FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} />
                 <Button variant="contained" color="primary" type="submit">SUBMIT</Button>
                 <Button variant="contained" color="secondary" onClick={clear} size="small" >CLEAR</Button>
